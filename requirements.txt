@@ -1,0 +1,44 @@
+# EV Battery Health Digital Twin — core environment
+# Covers Phases 1-3 & 6-7 (ingestion, EDA, SOH/RUL classic ML, anomaly detection)
+# Install:  .venv/Scripts/python.exe -m pip install -r requirements.txt
+
+# --- core data ---
+numpy>=1.26,<3
+pandas>=2.2
+scipy>=1.13            # scipy.io.loadmat -> NASA .mat files
+pyarrow>=16.0          # parquet feature store
+h5py>=3.11             # MATLAB v7.3 files (HDF5)
+
+# --- eda / plotting ---
+matplotlib>=3.9
+seaborn>=0.13
+plotly>=5.22
+
+# --- notebooks ---
+jupyterlab>=4.2
+ipykernel>=6.29
+ipywidgets>=8.1
+
+# --- classic ml ---
+scikit-learn>=1.5
+xgboost>=2.1
+lightgbm>=4.4
+statsmodels>=0.14      # trend / change-point / regression diagnostics
+ruptures>=1.1.9        # change-point detection (Phase 6)
+
+# --- explainability & uncertainty ---
+shap>=0.46
+mapie>=0.8             # conformal prediction intervals (Phase 5)
+
+# --- experiment tracking & config ---
+mlflow>=2.14
+pyyaml>=6.0
+python-dotenv>=1.0
+
+# --- quality & tests ---
+pytest>=8.2
+pandera>=0.20          # dataframe schema / data contracts
+tqdm>=4.66
+
+# --- docs tooling ---
+pypdf>=4.2

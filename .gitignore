@@ -1,0 +1,22 @@
+# environment
+.venv/
+__pycache__/
+*.py[cod]
+.env
+
+# data (never commit raw datasets)
+data/raw/
+data/interim/
+data/processed/
+*.mat
+*.parquet
+
+# artifacts
+models/
+mlruns/
+.ipynb_checkpoints/
+reports/figures/
+
+# os / editor
+.DS_Store
+.vscode/
