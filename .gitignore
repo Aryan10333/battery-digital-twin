@@ -20,3 +20,8 @@ reports/figures/
 # os / editor
 .DS_Store
 .vscode/
+
+# packaging
+*.egg-info/
+build/
+dist/
