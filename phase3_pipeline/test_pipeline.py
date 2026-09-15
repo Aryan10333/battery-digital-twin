@@ -1,6 +1,6 @@
 """Regression tests for the ingestion pipeline.
 
-Values are the measured ground truth recorded in docs/02_data_dictionary.md.
+Values are the measured ground truth recorded in phase2_data_audit/data_dictionary.md.
 They exist to catch silent changes in parsing behaviour, so they are exact.
 """
 from __future__ import annotations
@@ -9,14 +9,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from data_contracts.schemas import validate
-from src.config import load_config, resolve
-from src.preprocessing.targets import find_eol_cycle
+from phase3_pipeline.schemas import validate
+from common.config import load_config, resolve
+from phase3_pipeline.targets import find_eol_cycle
 
 PROCESSED = resolve("processed")
 pytestmark = pytest.mark.skipif(
     not (PROCESSED / "cycle_summary.parquet").exists(),
-    reason="run `python -m src.ingestion.build_dataset` first",
+    reason="run `python -m phase3_pipeline.build_dataset` first",
 )
 
 

@@ -1,11 +1,12 @@
-# Canonical paths and ingestion constants. No absolute paths anywhere in src/.
+# Canonical paths and ingestion constants. No absolute paths anywhere in the phase packages.
 # All paths are relative to the repository root.
 
 paths:
   raw_nasa: data/raw/nasa/extracted
   interim: data/interim
   processed: data/processed
-  reports: reports
+  phase2_outputs: phase2_data_audit/outputs
+  phase3_outputs: phase3_pipeline/outputs
   models: models
 
 dataset:
@@ -13,7 +14,7 @@ dataset:
   archive_sha256: 82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e
   downloaded: 2026-09-14
 
-# Tier 1 = the clean 24 degC group. See docs/02_data_dictionary.md section 6.
+# Tier 1 = the clean 24 degC group. See phase2_data_audit/data_dictionary.md section 6.
 tier1:
   bundle: "1. BatteryAgingARC-FY08Q4"
   batteries: [B0005, B0006, B0007, B0018]

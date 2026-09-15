@@ -1,7 +1,7 @@
 """Quality checks. Flags are recorded as columns; rows are never silently dropped.
 
 Capacity regeneration is deliberately NOT flagged as an anomaly -- it is real
-physics and a documented property of this dataset (docs/01_domain_primer.md
+physics and a documented property of this dataset (phase1_domain/domain_primer.md
 section 2.7). It is counted so the magnitude can be reported.
 """
 from __future__ import annotations

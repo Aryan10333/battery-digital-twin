@@ -1,7 +1,7 @@
 """SOH and RUL target construction.
 
 Two decisions are made explicit here because both were flagged in the Phase 2
-audit (docs/02_data_dictionary.md, Findings 3 and 5):
+audit (phase2_data_audit/data_dictionary.md, Findings 3 and 5):
 
 1. **EOL is defined on absolute capacity (1.4 Ah)**, matching NASA's own
    experimental criterion, not on a fixed SOH percentage. Measured initial

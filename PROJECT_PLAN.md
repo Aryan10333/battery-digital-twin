@@ -104,7 +104,7 @@ that separates the project from a generic regression demo.
 5. Birkl et al. — Oxford Battery Degradation Dataset 1 documentation.
 6. Attia et al. 2022 — "knees in battery aging" — for precise knee-point language.
 
-**Deliverable:** `docs/01_domain_primer.md` — your own 2–3 page write-up: glossary, degradation
+**Deliverable:** `phase1_domain/domain_primer.md` — your own 2–3 page write-up: glossary, degradation
 mechanisms, why SOH and RUL are defined the way they are, and the limitations of cell-level data.
 
 **Done when:** you can answer, unaided — *"Why does CC-charge time shorten as a cell ages?"*
@@ -162,7 +162,7 @@ Produce a table answering:
 6. Real elapsed time between cycles — the rest periods that produce capacity regeneration.
 7. Unit checks: Ah vs mAh, current sign convention (is discharge negative?), °C vs K.
 
-**Deliverable:** `docs/02_data_dictionary.md` — every field with unit, dtype and range, a per-battery
+**Deliverable:** `phase2_data_audit/data_dictionary.md` — every field with unit, dtype and range, a per-battery
 summary table, and a "surprises found" section.
 
 **Done when:** you can state, per battery: cycle count, capacity start → end, % fade, ambient
@@ -203,8 +203,8 @@ notebooks import — not as notebook cells.
 ### 3.3 Reproducibility
 
 - All paths live in `configs/paths.yaml`. Zero hard-coded `D:\...` strings inside `src/`.
-- `python -m src.ingestion.build_dataset` regenerates everything from `data/raw/` in one command.
-- `tests/test_ingestion.py`: known cycle count for B0005, `SOH[0] == 100`, capacity within `[1.0, 2.2]`.
+- `python -m phase3_pipeline.build_dataset` regenerates everything from `data/raw/` in one command.
+- `phase3_pipeline/test_pipeline.py`: known cycle count for B0005, `SOH[0] == 100`, capacity within `[1.0, 2.2]`.
 
 **Deliverable:** `data/processed/cycle_summary.parquet` and `telemetry.parquet`, plus passing tests.
 

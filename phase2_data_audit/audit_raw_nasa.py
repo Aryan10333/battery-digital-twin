@@ -66,5 +66,5 @@ for r in rows:
     else:
         print(f"{r['bid']:8s} {r['bundle'][:4]:4s} {r['n_cycles']:5d} {r['charge']:4d} {r['disch']:4d} {r['imped']:4d} {amb:>10s} {'0':>5s}  -- no capacity --")
 
-with open("reports/audit_raw_nasa.json", "w") as f:
+with open("phase2_data_audit/outputs/audit_raw_nasa.json", "w") as f:
     json.dump(rows, f, indent=2, default=str)

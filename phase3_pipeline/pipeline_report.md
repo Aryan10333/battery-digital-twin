@@ -25,7 +25,7 @@ tests/test_ingestion.py               27 regression and leakage tests
 Single entry point:
 
 ```bash
-python -m src.ingestion.build_dataset
+python -m phase3_pipeline.build_dataset
 ```
 
 ### Output tables (`data/processed/`)
@@ -111,7 +111,7 @@ physics and is quantified in `regeneration_summary` instead.
 
 ## 3. Findings
 
-New in Phase 3; the Phase 2 findings are in `docs/02_data_dictionary.md`.
+New in Phase 3; the Phase 2 findings are in `phase2_data_audit/data_dictionary.md`.
 
 ### Finding 1 — discharge records continue past load removal
 
@@ -234,17 +234,17 @@ by `git add -A` in commit `fdf9d4d`. Removed from tracking in `bfad24c` and
 
 ### 4.3 Audit script output path
 
-`scripts/audit_raw_nasa.py` initially wrote its JSON to a hard-coded `/tmp` path,
+`phase2_data_audit/audit_raw_nasa.py` initially wrote its JSON to a hard-coded `/tmp` path,
 which does not resolve on Windows; the table printed but the run exited non-zero.
-Redirected to `reports/audit_raw_nasa.json` when the script was moved into the repo.
+Redirected to `phase2_data_audit/outputs/audit_raw_nasa.json` when the script was moved into the repo.
 
 ### 4.4 Carried forward from Phase 2 — an error in the project plan
 
-`docs/PROJECT_PLAN.md` (Phase 13) asserts that NASA offers "almost no thermal
+`PROJECT_PLAN.md` (Phase 13) asserts that NASA offers "almost no thermal
 variation" and that the scenario engine would therefore be largely extrapolating.
 That is true of Tier 1 but **wrong for the dataset as a whole**, which spans
 ambient 4 / 24 / 43 °C and discharge currents 1 / 2 / 4 A. The plan text has not
-yet been amended; `docs/02_data_dictionary.md` Finding 8 records the correction.
+yet been amended; `phase2_data_audit/data_dictionary.md` Finding 8 records the correction.
 
 ### 4.5 Claims from earlier phases that Phase 3 confirmed
 
@@ -291,7 +291,7 @@ reproduce known battery physics without being fitted to do so:
 
 CC duration shortens with age, CV duration lengthens to compensate, and
 charge-transfer resistance rises as capacity falls — the mechanism described in
-`docs/01_domain_primer.md` §2.8, recovered from the data.
+`phase1_domain/domain_primer.md` §2.8, recovered from the data.
 
 ### 5.4 Targets and regeneration as built
 
@@ -324,11 +324,11 @@ exists.
 ```bash
 python -m pip install -r requirements.txt
 python -m pip install -e .
-python -m src.ingestion.build_dataset      # -> data/processed/*.parquet
-python -m pytest tests/ -q                 # -> 27 passed
+python -m phase3_pipeline.build_dataset      # -> data/processed/*.parquet
+python -m pytest phase3_pipeline/ -q                 # -> 27 passed
 ```
 
-Raw data is not in version control. `docs/02_data_dictionary.md` §1 records the
+Raw data is not in version control. `phase2_data_audit/data_dictionary.md` §1 records the
 archive SHA256, download date and source for re-acquisition.
 
 ---

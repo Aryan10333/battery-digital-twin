@@ -2,7 +2,7 @@
 
 Regenerates everything under data/processed/ from data/raw/ in one command:
 
-    python -m src.ingestion.build_dataset
+    python -m phase3_pipeline.build_dataset
 """
 from __future__ import annotations
 
@@ -12,10 +12,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.config import load_config, resolve
-from src.ingestion.nasa_loader import parse_battery
-from src.preprocessing.quality import check_telemetry, flag_cycles, regeneration_summary
-from src.preprocessing.targets import add_targets
+from common.config import load_config, resolve
+from phase3_pipeline.nasa_loader import parse_battery
+from phase3_pipeline.quality import check_telemetry, flag_cycles, regeneration_summary
+from phase3_pipeline.targets import add_targets
 
 
 def build(tier: str = "tier1", write: bool = True) -> dict[str, pd.DataFrame]:
@@ -76,7 +76,7 @@ def build(tier: str = "tier1", write: bool = True) -> dict[str, pd.DataFrame]:
                 for bid, g in cycles.groupby("battery_id", sort=True)
             },
         }
-        rep = resolve("reports")
+        rep = resolve("phase3_outputs")
         rep.mkdir(parents=True, exist_ok=True)
         (rep / "build_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
         print(f"  wrote {rep / 'build_summary.json'}")

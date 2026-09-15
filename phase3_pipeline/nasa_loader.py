@@ -2,7 +2,7 @@
 
 Design notes recorded during the Phase 2/3 audit, all verified against the data
 rather than the bundle READMEs (which disagree with the files in three places,
-see docs/02_data_dictionary.md Finding 1):
+see phase2_data_audit/data_dictionary.md Finding 1):
 
 * Discharge cycles expose ``Current_load`` / ``Voltage_load``; charge cycles
   expose ``Current_charge`` / ``Voltage_charge``. The READMEs claim otherwise.

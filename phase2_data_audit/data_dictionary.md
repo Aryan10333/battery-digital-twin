@@ -1,7 +1,7 @@
 # NASA Li-ion Battery Aging Dataset — Data Dictionary & Structural Audit
 
 Phase 2 deliverable. Everything below was measured from the downloaded files, not assumed.
-Reproduce with `scripts/audit_raw_nasa.py`.
+Reproduce with `phase2_data_audit/audit_raw_nasa.py`.
 
 ## 1. Acquisition
 
@@ -109,7 +109,7 @@ Every number in the Phase 1 primer marked *"verify in Phase 2"* is confirmed cor
 
 ## 4. Per-battery inventory (measured)
 
-Bundle 1 only — the clean group. Full table for all 34 batteries in `reports/audit_raw_nasa.txt`.
+Bundle 1 only — the clean group. Full table for all 34 batteries in `phase2_data_audit/outputs/audit_raw_nasa.txt`.
 
 | Battery | Cycles | Charge | Discharge | Impedance | Ambient | Cap first | Cap last | Cap min | Fade % | Reaches 1.4 Ah | Regen steps |
 |---|---|---|---|---|---|---|---|---|---|---|---|
