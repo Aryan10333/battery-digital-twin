@@ -1,0 +1,45 @@
+{
+  "tier": "tier1",
+  "batteries": [
+    "B0005",
+    "B0006",
+    "B0007",
+    "B0018"
+  ],
+  "n_cycles": 636,
+  "n_telemetry_rows": 2089050,
+  "per_battery": {
+    "B0005": {
+      "cycles": 168,
+      "eol_cycle": 125,
+      "censored": false,
+      "capacity_first_ah": 1.8565,
+      "capacity_last_ah": 1.3251,
+      "qc_flagged_cycles": 2
+    },
+    "B0006": {
+      "cycles": 168,
+      "eol_cycle": 109,
+      "censored": false,
+      "capacity_first_ah": 2.0353,
+      "capacity_last_ah": 1.1857,
+      "qc_flagged_cycles": 9
+    },
+    "B0007": {
+      "cycles": 168,
+      "eol_cycle": null,
+      "censored": true,
+      "capacity_first_ah": 1.8911,
+      "capacity_last_ah": 1.4325,
+      "qc_flagged_cycles": 16
+    },
+    "B0018": {
+      "cycles": 132,
+      "eol_cycle": 97,
+      "censored": false,
+      "capacity_first_ah": 1.855,
+      "capacity_last_ah": 1.3411,
+      "qc_flagged_cycles": 3
+    }
+  }
+}

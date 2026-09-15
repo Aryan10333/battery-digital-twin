@@ -1,0 +1,55 @@
+# Canonical paths and ingestion constants. No absolute paths anywhere in src/.
+# All paths are relative to the repository root.
+
+paths:
+  raw_nasa: data/raw/nasa/extracted
+  interim: data/interim
+  processed: data/processed
+  reports: reports
+  models: models
+
+dataset:
+  name: nasa_pcoe_battery_aging
+  archive_sha256: 82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e
+  downloaded: 2026-09-14
+
+# Tier 1 = the clean 24 degC group. See docs/02_data_dictionary.md section 6.
+tier1:
+  bundle: "1. BatteryAgingARC-FY08Q4"
+  batteries: [B0005, B0006, B0007, B0018]
+
+# Documented per-cell discharge cut-off voltages (bundle 1 README).
+# Measured minima run slightly below these; used for QC comparison, not for trimming.
+cutoff_voltage_v:
+  B0005: 2.7
+  B0006: 2.5
+  B0007: 2.2
+  B0018: 2.5
+
+ingestion:
+  # A discharge sample counts as "under load" when |I| exceeds this.
+  # Required because each discharge record continues past load removal into a
+  # relaxation tail (~9% of the record) where voltage recovers. See Finding 9.
+  active_current_a: 0.5
+  # Charge is in CC while current exceeds this; the remainder of the active
+  # charge record is CV.
+  cc_current_a: 1.0
+  # Charge/discharge samples below this |I| are treated as idle.
+  idle_current_a: 0.01
+
+targets:
+  # NASA's own EOL criterion is absolute: 30% fade from 2.0 Ah rated.
+  # Defined on absolute capacity so the RUL label is consistent across cells
+  # regardless of which Q_ref is used for SOH display. See Finding 3.
+  eol_capacity_ah: 1.4
+  rated_capacity_ah: 2.0
+  # Capacity regeneration makes SOH non-monotonic, so EOL is the first cycle
+  # from which capacity stays at or below the threshold for this many
+  # consecutive cycles, not the first cycle that merely touches it. See Finding 5.
+  eol_sustain_cycles: 5
+
+quality:
+  voltage_v: [0.0, 4.3]
+  current_a: [-5.0, 5.0]
+  temperature_c: [0.0, 80.0]
+  min_samples_per_cycle: 50

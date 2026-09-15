@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: battery-digital-twin
+Version: 0.1.0
+Summary: EV battery health digital twin: SOH estimation, RUL prognostics, anomaly detection
+Requires-Python: >=3.12
