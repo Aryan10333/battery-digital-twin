@@ -37,7 +37,12 @@ battery-digital-twin/
 │   ├── phase3_findings.ipynb    findings with code, output and figures
 │   └── outputs/                 build summary
 │
-└── phase4_eda/                  (next)
+└── phase4_eda/
+    ├── eda_features.py          derived quantities (idle time, dQ/dV peaks, screening)
+    ├── test_eda_features.py     11 tests
+    ├── phase4_eda_report.ipynb  EDA report: trajectories, regeneration, curves,
+    │                            impedance, health-indicator screening, findings
+    └── outputs/                 hi_screening.csv, data_quality_log.csv
 ```
 
 ## Setup
@@ -63,7 +68,7 @@ expected bundle layout are recorded in
 
 ```bash
 python -m phase3_pipeline.build_dataset      # -> data/processed/*.parquet
-python -m pytest -q                          # -> 27 passed
+python -m pytest -q                          # -> 38 passed
 ```
 
 The build is reproducible: deleting `data/processed/` and re-running reproduces all four
@@ -77,8 +82,9 @@ parquet files byte-identically.
 | 1 — Domain foundations | done |
 | 2 — Dataset acquisition & audit | done |
 | 3 — Canonical data pipeline | done |
-| 4 — EDA | next |
-| 5–16 | planned |
+| 4 — EDA | done |
+| 5 — Targets & evaluation protocol | next |
+| 6–16 | planned |
 
 **Scope note:** this is a **cell-level** digital twin. The NASA data is individual
 experimental cells, not a production EV pack. Pack-level behaviour is a documented

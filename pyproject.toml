@@ -12,4 +12,4 @@ requires-python = ">=3.12"
 include = ["common*", "phase*"]
 
 [tool.pytest.ini_options]
-testpaths = ["phase3_pipeline"]
+testpaths = ["phase3_pipeline", "phase4_eda"]

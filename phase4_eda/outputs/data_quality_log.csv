@@ -1,0 +1,14 @@
+id,found in,issue,scope,handling,status
+D1,Phase 3,"rest_before_h is discharge-start spacing, not idle time",all,Use idle_total_h; fix pipeline,open in pipeline
+D2,Phase 3,Missing relaxation tail stored as 0,"B0006 c1-31, B0007 c17-51 (54 cycles)",Treat as NaN; fix pipeline,open in pipeline
+D3,Phase 3,Telemetry QC counts miss charge records,17 charge samples,Extend QC to paired charge,open in pipeline
+D4,Phase 4,No charge logged before cycle 90; charge features copied from cycle 89,B0005/6/7 cycle 90,Flag qc_charge_shared; exclude charge features,open in pipeline
+D5,Phase 4,Regeneration count includes sub-mAh steps,regeneration_summary,Count rises > 5 mAh,open in pipeline
+D6,Phase 4,Sampling interval changes with age,"B0005/6/7: 18.6 s to cycle 30, 9.4 s from 31 (18.5 s at 43); B0018 drifts 9.4 to 13.8 s",Resample curves to a fixed grid,Phase 6
+D7,Phase 4,Secondary dQ/dV peak (~3.8 V) not resolvable early,"cycles 1-20 all cells, about half of 21-40",Use main peak (present every cycle); secondary only after ~cycle 40,Phase 6
+D8,Phase 4,"Rct offset depends on sweep context, drifts with age and changes sign",B0005-7 (B0007 +6.1 mOhm early; B0005 -5.9 mOhm late),Use after-charge sweeps only,Phase 6
+D9,Phase 4,B0018 Rct atypical (not explained by context),B0018,Exclude B0018 Rct; keep cell,decided
+D10,Phase 3/4,Deep early discharges past cut-off,21 cycles B0006/B0007,Shown not to inflate capacity; keep,closed
+D11,Phase 3,Aborted (5) and partial (4) charges,"cycle 1 all; cycle 31 B0005-7; B0018 46,56",Exclude from charge features,flagged
+D12,Phase 3,Leading impedance gap,cycles 1-19 B0005/6/7 (57),Optional feature + missing indicator,decided
+D13,Phase 4,Test-rig interruptions,"B0005/6/7 cycle 31 (36 h stop, charge stub, sampling switch) and 43 (11 h stop, impedance step)",Treat as known events; check features for discontinuities,Phase 5/6
